@@ -567,6 +567,10 @@ p {
     flex-direction: row;
     gap: 0.4rem;
   }
+
+  .dots-hero-section-Container {
+    margin-top: 4.5rem;
+  }
   .hero-section-link a {
     color: var(--white);
     text-decoration: none;

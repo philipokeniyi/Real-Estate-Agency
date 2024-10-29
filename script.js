@@ -97,27 +97,40 @@ document.querySelectorAll(".dot-hero-section").forEach(function (element) {
 // about counter
 
 
-const counters = document.querySelectorAll('.counter')
+const counters = document.querySelectorAll('.counter');
 
-counters.forEach(counter => {
-    counter.innerText = '0'
+// Create an Intersection Observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const counter = entry.target;
+      counter.innerText = '0';
 
-    const updateCounter = () => {
-        const target = +counter.getAttribute('data-target')
-        const c = +counter.innerText
+      const updateCounter = () => {
+        const target = +counter.getAttribute('data-target');
+        const c = +counter.innerText;
 
-        const increment = target / 20
+        const increment = target / 50;
 
-        if(c < target) {
-            counter.innerText = `${Math.ceil(c + increment)}`
-            setTimeout(updateCounter, 50)
+        if (c < target) {
+          counter.innerText = `${Math.ceil(c + increment)}`;
+          setTimeout(updateCounter, 50);
         } else {
-            counter.innerText = target
+          counter.innerText = target;
         }
-    }
+      };
 
-    updateCounter()
-})
+      updateCounter();
+      observer.unobserve(counter); // Stop observing after counting starts
+    }
+  });
+});
+
+// Observe each counter
+counters.forEach((counter) => {
+  observer.observe(counter);
+});
+
 
 
 

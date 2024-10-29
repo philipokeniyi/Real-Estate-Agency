@@ -1970,3 +1970,73 @@ footer {
   font-size:0.7rem;
  }
 }
+
+
+.scroll-content-1 {
+  opacity: 0; /* Initially hidden */
+  transform: scale(1.1); /* Initially scaled up */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Animation */
+}
+
+.scroll-content-1.show {
+  opacity: 1; /* Show when scrolled into view */
+  transform: scale(1); /* Scale down to normal size */
+}
+
+.scroll-content-2 {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.scroll-content-2.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Using id selectors to set transition delays */
+#sc-2-delay-1.show {
+  transition-delay: 0.2s;
+}
+#sc-2-delay-1-1.show {
+  transition-delay: 0.3s;
+}
+#sc-2-delay-1-2.show {
+  transition-delay: 0.4s;
+}
+#sc-2-delay-1-3.show {
+  transition-delay: 0.5s;
+}
+
+#sc-2-delay-2.show {
+  transition-delay: 1s;
+}
+
+#sc-2-delay-3.show {
+  transition-delay: 1.5s;
+}
+
+#sc-2-delay-4.show {
+  transition-delay: 2s;
+}
+#sc-2-delay-5.show {
+  transition-delay: 2.5s;
+}
+
+@media (max-width: 800px) {
+  .scroll-content-1,
+  .scroll-content-2 {
+    opacity: 1; /* Ensure elements are visible */
+    transform: none; /* Remove scaling and translation */
+    transition: none; /* Disable animations */
+  }
+
+  /* Optional: If you also want to prevent the delays */
+  #sc-2-delay-1.show,
+  #sc-2-delay-2.show,
+  #sc-2-delay-3.show,
+  #sc-2-delay-4.show,
+  #sc-2-delay-5.show {
+    transition-delay: 0; /* Remove delay */
+  }
+}
